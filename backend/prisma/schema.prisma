@@ -1,0 +1,81 @@
+// Prisma Schema para Pastelería Dulzura
+// Para cambiar a PostgreSQL: cambia provider a "postgresql" y url a env("DATABASE_URL")
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id           String   @id @default(uuid())
+  usuario      String   @unique
+  passwordHash String
+  rol          String   @default("ADMIN")
+  createdAt    DateTime @default(now())
+}
+
+model Categoria {
+  id        String     @id @default(uuid())
+  nombre    String
+  slug      String     @unique
+  icono     String?    @default("Cake")
+  orden     Int        @default(0)
+  activo    Boolean    @default(true)
+  productos Producto[]
+  createdAt DateTime   @default(now())
+}
+
+model Producto {
+  id          String    @id @default(uuid())
+  nombre      String
+  descripcion String
+  precio      Float
+  precioMayor Float?
+  categoriaId String
+  categoria   Categoria @relation(fields: [categoriaId], references: [id], onDelete: Cascade)
+  imagenUrl   String
+  disponible  Boolean   @default(true)
+  destacado   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+}
+
+model Oferta {
+  id                  String    @id @default(uuid())
+  productoId          String?
+  titulo              String
+  descripcionCorta    String
+  porcentajeDescuento Float?
+  precioOferta        Float?
+  imagenUrl           String
+  fechaInicio         DateTime?
+  fechaFin            DateTime?
+  activo              Boolean   @default(true)
+  createdAt           DateTime  @default(now())
+}
+
+model Articulo {
+  id           String   @id @default(uuid())
+  titulo       String
+  slug         String   @unique
+  resumenCorto String
+  contenido    String
+  imagenUrl    String
+  autor        String   @default("Pastelería Dulzura")
+  publicado    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
+
+model Contacto {
+  id                       String   @id @default(uuid())
+  telefonoWhatsapp         String   @default("51987654321")
+  direccion                String   @default("Av. Primavera 456, Santiago de Surco, Lima")
+  horarios                 String   @default("Lun - Sáb: 8:00 AM - 8:00 PM | Dom: 9:00 AM - 3:00 PM")
+  redesSociales            String   @default("{\"facebook\":\"https://facebook.com/pasteleriadulzura\",\"instagram\":\"https://instagram.com/pasteleriadulzura\"}")
+  emailContacto            String   @default("pedidos@pasteleriadulzura.pe")
+  mensajePlantillaWhatsapp String   @default("Hola Pastelería Dulzura, me gustaría pedir: {producto} (Precio: S/{precio}). ¿Tienen disponibilidad?")
+  updatedAt                DateTime @updatedAt
+}

@@ -35,7 +35,9 @@ const crearOferta = async (req, res, next) => {
       return res.status(400).json({ error: 'Título y descripción corta son requeridos' });
     }
 
-    const urlImagenFinal = req.file ? `/uploads/ofertas/${req.file.filename}` : (imagenUrl || '/images/oferta-default.jpg');
+    const urlImagenFinal = req.file 
+      ? (req.file.path && req.file.path.startsWith('http') ? req.file.path : `/uploads/ofertas/${req.file.filename}`)
+      : (imagenUrl || '/images/oferta-default.jpg');
 
     const nuevaOferta = await prisma.oferta.create({
       data: {
@@ -89,7 +91,7 @@ const actualizarOferta = async (req, res, next) => {
 
     let nuevaImagen = null;
     if (req.file) {
-      nuevaImagen = `/uploads/ofertas/${req.file.filename}`;
+      nuevaImagen = req.file.path && req.file.path.startsWith('http') ? req.file.path : `/uploads/ofertas/${req.file.filename}`;
     } else if (imagenUrl && imagenUrl !== ofertaExistente.imagenUrl) {
       nuevaImagen = imagenUrl;
     }

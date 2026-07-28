@@ -48,7 +48,9 @@ const crearArticulo = async (req, res, next) => {
     const baseSlug = slugify(titulo, { lower: true, strict: true });
     const slug = `${baseSlug}-${Date.now().toString().slice(-4)}`;
 
-    const urlImagenFinal = req.file ? `/uploads/blog/${req.file.filename}` : (imagenUrl || '/images/blog-default.jpg');
+    const urlImagenFinal = req.file 
+      ? (req.file.path && req.file.path.startsWith('http') ? req.file.path : `/uploads/blog/${req.file.filename}`)
+      : (imagenUrl || '/images/blog-default.jpg');
 
     const nuevoArticulo = await prisma.articulo.create({
       data: {
@@ -91,7 +93,7 @@ const actualizarArticulo = async (req, res, next) => {
 
     let nuevaImagen = null;
     if (req.file) {
-      nuevaImagen = `/uploads/blog/${req.file.filename}`;
+      nuevaImagen = req.file.path && req.file.path.startsWith('http') ? req.file.path : `/uploads/blog/${req.file.filename}`;
     } else if (imagenUrl && imagenUrl !== articuloExistente.imagenUrl) {
       nuevaImagen = imagenUrl;
     }

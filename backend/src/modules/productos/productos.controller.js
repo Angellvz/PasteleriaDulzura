@@ -76,7 +76,9 @@ const crearProducto = async (req, res, next) => {
     }
 
     // Ruta por defecto si no viene imagen
-    const urlImagenFinal = req.file ? `/uploads/productos/${req.file.filename}` : (imagenUrl || '/images/placeholder.jpg');
+    const urlImagenFinal = req.file 
+      ? (req.file.path && req.file.path.startsWith('http') ? req.file.path : `/uploads/productos/${req.file.filename}`)
+      : (imagenUrl || '/images/placeholder.jpg');
 
     const nuevoProducto = await prisma.producto.create({
       data: {
@@ -128,7 +130,7 @@ const actualizarProducto = async (req, res, next) => {
 
     let nuevaImagen = null;
     if (req.file) {
-      nuevaImagen = `/uploads/productos/${req.file.filename}`;
+      nuevaImagen = req.file.path && req.file.path.startsWith('http') ? req.file.path : `/uploads/productos/${req.file.filename}`;
     } else if (imagenUrl && imagenUrl !== productoExistente.imagenUrl) {
       nuevaImagen = imagenUrl;
     }

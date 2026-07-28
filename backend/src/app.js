@@ -45,7 +45,7 @@ app.use(manejarErrores);
 
 const PORT = process.env.PORT || 5000;
 
-if (process.env.NODE_ENV !== 'test') {
+if (!process.env.VERCEL && process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => {
     console.log(`🍰 Servidor Pastelería Dulzura corriendo en puerto http://localhost:${PORT}`);
   });

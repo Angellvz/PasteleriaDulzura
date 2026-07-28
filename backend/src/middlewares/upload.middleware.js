@@ -7,9 +7,10 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');
 let storage;
 
 const isCloudinaryConfigured = !!(
-  process.env.CLOUDINARY_CLOUD_NAME &&
-  process.env.CLOUDINARY_API_KEY &&
-  process.env.CLOUDINARY_API_SECRET
+  process.env.CLOUDINARY_URL ||
+  (process.env.CLOUDINARY_CLOUD_NAME &&
+   process.env.CLOUDINARY_API_KEY &&
+   process.env.CLOUDINARY_API_SECRET)
 );
 
 if (isCloudinaryConfigured) {

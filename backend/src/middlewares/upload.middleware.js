@@ -20,14 +20,20 @@ const cloudinaryStorage = new CloudinaryStorage({
   }
 });
 
-// Storage Local (fallback)
-const uploadsDir = path.join(__dirname, '../../uploads');
-['productos', 'ofertas', 'blog'].forEach(subDir => {
-  const dirPath = path.join(uploadsDir, subDir);
-  if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
+// Storage Local (fallback solo fuera de Vercel)
+if (!process.env.VERCEL) {
+  try {
+    const uploadsDir = path.join(__dirname, '../../uploads');
+    ['productos', 'ofertas', 'blog'].forEach(subDir => {
+      const dirPath = path.join(uploadsDir, subDir);
+      if (!fs.existsSync(dirPath)) {
+        fs.mkdirSync(dirPath, { recursive: true });
+      }
+    });
+  } catch (err) {
+    // Silencioso si el sistema de archivos es de solo lectura
   }
-});
+}
 
 const localStorage = multer.diskStorage({
   destination: (req, file, cb) => {

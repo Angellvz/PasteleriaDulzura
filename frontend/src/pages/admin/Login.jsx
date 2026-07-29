@@ -101,13 +101,6 @@ const Login = () => {
             )}
           </button>
         </form>
-
-        <div className="pt-4 border-t border-dulzura-rose/30 text-center">
-          <p className="text-xs text-dulzura-chocolate/60">
-            Credenciales por defecto: <strong>admin</strong> / <strong>admin123</strong>
-          </p>
-        </div>
-
       </div>
     </div>
   );

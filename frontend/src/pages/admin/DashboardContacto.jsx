@@ -64,6 +64,9 @@ const DashboardContacto = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(['admin-contacto']);
+      queryClient.invalidateQueries(['contacto-header']);
+      queryClient.invalidateQueries(['contacto-info']);
+      queryClient.invalidateQueries(['public-contacto-widget']);
       setGuardadoExitoso(true);
       setTimeout(() => setGuardadoExitoso(false), 4000);
     }

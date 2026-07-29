@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import CartDrawer from './components/public/CartDrawer';
+import WhatsAppWidget from './components/common/WhatsAppWidget';
 import PrivateRoute from './routes/PrivateRoute';
 
 // Public Pages
@@ -39,6 +40,7 @@ function App() {
         <CartProvider>
           <Router>
             <CartDrawer />
+            <WhatsAppWidget />
             <Routes>
               {/* Rutas Públicas */}
               <Route path="/" element={<Home />} />

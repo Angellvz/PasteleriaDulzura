@@ -52,7 +52,7 @@ const CartDrawer = () => {
     }
     if (fechaEntrega) mensaje += `• *Fecha solicitada:* ${fechaEntrega} ${horaEntrega ? `a las ${horaEntrega}` : ''}\n`;
     
-    mensaje += `\n*📦 DETALLE DE LA CANASTILLA:*\n`;
+    mensaje += `\n*📦 DETALLE DEL CARRITO:*\n`;
     cart.forEach((item, index) => {
       mensaje += `${index + 1}. *${item.nombre}* x${item.cantidad} - S/ ${(item.precio * item.cantidad).toFixed(2)}\n`;
       if (item.notas) mensaje += `   └ _Nota: ${item.notas}_\n`;
@@ -93,7 +93,7 @@ const CartDrawer = () => {
                 <ShoppingBag className="w-6 h-6" />
               </div>
               <div>
-                <h2 className="font-serif text-lg font-bold">Canastilla Dulzura</h2>
+                <h2 className="font-serif text-lg font-bold">Carrito Dulzura</h2>
                 <p className="text-xs text-dulzura-pink/90">{totalItemsCount} {totalItemsCount === 1 ? 'producto seleccionado' : 'productos seleccionados'}</p>
               </div>
             </div>
@@ -138,7 +138,7 @@ const CartDrawer = () => {
                 <div className="w-20 h-20 rounded-full bg-dulzura-rose/30 flex items-center justify-center text-dulzura-chocolate/50">
                   <ShoppingBag className="w-10 h-10" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-dulzura-chocolate">Tu canastilla está vacía</h3>
+                <h3 className="font-serif text-lg font-bold text-dulzura-chocolate">Tu carrito está vacío</h3>
                 <p className="text-xs text-dulzura-chocolate/60 max-w-xs">
                   Explora nuestras deliciosas tortas, postres y productos de pastelería artesanal en Arequipa.
                 </p>

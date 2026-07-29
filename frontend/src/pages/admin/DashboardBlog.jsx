@@ -117,13 +117,13 @@ const DashboardBlog = () => {
 
   return (
     <AdminLayout title="Gestión de Artículos del Blog">
-      <div className="flex justify-between items-center mb-6">
-        <p className="text-sm text-dulzura-chocolate/70">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
+        <p className="text-xs sm:text-sm text-dulzura-chocolate/70 break-words max-w-full">
           Publica artículos, consejos de reposteria e historias sobre el arte de la panadería.
         </p>
         <button
           onClick={() => handleOpenModal()}
-          className="px-5 py-2.5 rounded-xl bg-dulzura-chocolate hover:bg-dulzura-darkChoco text-white font-semibold text-sm flex items-center gap-2 shadow-md"
+          className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-dulzura-chocolate hover:bg-dulzura-darkChoco text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-md shrink-0"
         >
           <Plus className="w-4 h-4 text-dulzura-pink" />
           <span>Nuevo Artículo</span>
@@ -134,54 +134,56 @@ const DashboardBlog = () => {
         {isLoading ? (
           <div className="p-8 text-center text-gray-500">Cargando artículos...</div>
         ) : (
-          <table className="w-full text-left text-sm text-dulzura-chocolate">
-            <thead className="bg-dulzura-warmGray text-xs uppercase font-bold text-dulzura-chocolate/70 border-b border-gray-200">
-              <tr>
-                <th className="py-3.5 px-4">Artículo</th>
-                <th className="py-3.5 px-4">Autor</th>
-                <th className="py-3.5 px-4 text-center">Estado</th>
-                <th className="py-3.5 px-4 text-right">Acciones</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100">
-              {articulos.map((art) => (
-                <tr key={art.id} className="hover:bg-dulzura-rose/20">
-                  <td className="py-3 px-4">
-                    <div className="flex items-center gap-3">
-                      <img src={art.imagenUrl} alt={art.titulo} className="w-14 h-10 rounded-lg object-cover border" />
-                      <div>
-                        <p className="font-bold text-dulzura-chocolate">{art.titulo}</p>
-                        <p className="text-xs text-dulzura-chocolate/60 line-clamp-1">{art.resumenCorto}</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-3 px-4 text-xs font-semibold">{art.autor}</td>
-                  <td className="py-3 px-4 text-center">
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${
-                      art.publicado ? 'bg-emerald-100 text-emerald-800' : 'bg-gray-100 text-gray-600'
-                    }`}>
-                      {art.publicado ? 'Publicado' : 'Borrador'}
-                    </span>
-                  </td>
-                  <td className="py-3 px-4 text-right space-x-2">
-                    <button onClick={() => handleOpenModal(art)} className="p-2 hover:bg-gray-100 rounded-lg text-blue-600">
-                      <Pencil className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => {
-                        if (confirm(`¿Eliminar artículo "${art.titulo}"?`)) {
-                          deleteMutation.mutate(art.id);
-                        }
-                      }}
-                      className="p-2 hover:bg-red-50 rounded-lg text-red-600"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm text-dulzura-chocolate min-w-[650px]">
+              <thead className="bg-dulzura-warmGray text-xs uppercase font-bold text-dulzura-chocolate/70 border-b border-gray-200">
+                <tr>
+                  <th className="py-3.5 px-4">Artículo</th>
+                  <th className="py-3.5 px-4">Autor</th>
+                  <th className="py-3.5 px-4 text-center">Estado</th>
+                  <th className="py-3.5 px-4 text-right">Acciones</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {articulos.map((art) => (
+                  <tr key={art.id} className="hover:bg-dulzura-rose/20">
+                    <td className="py-3 px-4">
+                      <div className="flex items-center gap-3">
+                        <img src={art.imagenUrl} alt={art.titulo} className="w-14 h-10 rounded-lg object-cover border" />
+                        <div>
+                          <p className="font-bold text-dulzura-chocolate">{art.titulo}</p>
+                          <p className="text-xs text-dulzura-chocolate/60 line-clamp-1">{art.resumenCorto}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="py-3 px-4 text-xs font-semibold">{art.autor}</td>
+                    <td className="py-3 px-4 text-center">
+                      <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${
+                        art.publicado ? 'bg-emerald-100 text-emerald-800' : 'bg-gray-100 text-gray-600'
+                      }`}>
+                        {art.publicado ? 'Publicado' : 'Borrador'}
+                      </span>
+                    </td>
+                    <td className="py-3 px-4 text-right space-x-2">
+                      <button onClick={() => handleOpenModal(art)} className="p-2 hover:bg-gray-100 rounded-lg text-blue-600">
+                        <Pencil className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => {
+                          if (confirm(`¿Eliminar artículo "${art.titulo}"?`)) {
+                            deleteMutation.mutate(art.id);
+                          }
+                        }}
+                        className="p-2 hover:bg-red-50 rounded-lg text-red-600"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
 

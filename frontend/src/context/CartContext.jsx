@@ -53,7 +53,7 @@ export const CartProvider = ({ children }) => {
         ];
       }
     });
-    showNotification(`✨ "${product.nombre}" añadido a la canastilla`);
+    showNotification(`✨ "${product.nombre}" añadido al carrito`);
   };
 
   const removeFromCart = (id) => {

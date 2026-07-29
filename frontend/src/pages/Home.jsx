@@ -80,7 +80,7 @@ const Home = () => {
               {/* Text content */}
               <div className="lg:col-span-7 space-y-6">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dulzura-rose border border-dulzura-pink/30 text-dulzura-chocolate text-xs font-bold tracking-wider uppercase shadow-xs">
-                  <Sparkles className="w-4 h-4 text-dulzura-pink" />
+                  <Cake className="w-4 h-4 text-dulzura-pink" />
                   <span>Pastelería Artesanal en Arequipa</span>
                 </div>
 
@@ -126,24 +126,29 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Hero Image Collage */}
-              <div className="lg:col-span-5 relative">
+              {/* Hero Image Collage (Primero en móvil para alto impacto visual) */}
+              <div className="lg:col-span-5 relative order-first lg:order-last">
                 <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-                  <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-square">
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] sm:aspect-square group">
                     <img
                       src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop"
                       alt="Torta Selva Negra Pastelería Dulzura Arequipa"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-3 left-3 right-3 text-white p-3 rounded-2xl bg-black/40 backdrop-blur-md border border-white/20 sm:hidden">
+                      <span className="text-xs font-bold block">✨ Repostería Fina & Artesanal</span>
+                      <span className="text-[10px] text-white/90">Cayma, Yanahuara y todo Arequipa</span>
+                    </div>
                   </div>
                   {/* Floating Badge */}
-                  <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-dulzura-rose flex items-center gap-3 max-w-xs animate-fadeIn">
-                    <div className="w-12 h-12 rounded-xl bg-dulzura-rose flex items-center justify-center shrink-0">
-                      <Cake className="w-6 h-6 text-dulzura-chocolate" />
+                  <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-6 bg-white p-3 sm:p-4 rounded-2xl shadow-xl border border-dulzura-rose flex items-center gap-3 max-w-[240px] sm:max-w-xs shadow-pink-200/50">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-dulzura-rose flex items-center justify-center shrink-0">
+                      <Cake className="w-5 h-5 sm:w-6 sm:h-6 text-dulzura-chocolate" />
                     </div>
                     <div>
                       <p className="text-xs font-bold text-dulzura-chocolate">+1,500 Clientes Felices</p>
-                      <p className="text-[11px] text-dulzura-chocolate/70">Tortas de alta calidad en Arequipa</p>
+                      <p className="text-[10px] sm:text-[11px] text-dulzura-chocolate/70">Tortas finas en Arequipa</p>
                     </div>
                   </div>
                 </div>

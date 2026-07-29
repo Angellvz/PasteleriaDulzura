@@ -19,8 +19,8 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'Arial', 'Helvetica Neue', 'Helvetica', 'sans-serif'],
-        serif: ['Playfair Display', 'Georgia', 'serif']
+        sans: ['Manrope', 'Arial', 'sans-serif'],
+        serif: ['Montserrat', 'Arial', 'sans-serif']
       },
       keyframes: {
         fadeIn: {

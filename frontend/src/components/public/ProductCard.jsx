@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MessageCircle, Sparkles, Tag, Eye, ShoppingBag } from 'lucide-react';
+import { MessageCircle, Cake, Eye, Plus, ShoppingBag } from 'lucide-react';
 import { solicitarPedidoWhatsApp } from '../../services/pedido';
 import { useCart } from '../../context/CartContext';
 
@@ -48,7 +48,7 @@ const ProductCard = ({ producto, contacto }) => {
           )}
           {producto.destacado && (
             <span className="inline-flex items-center gap-1 px-3 py-1 bg-dulzura-pink text-white text-xs font-bold rounded-full shadow-md">
-              <Sparkles className="w-3 h-3" />
+              <Cake className="w-3.5 h-3.5" />
               Favorito
             </span>
           )}
@@ -74,33 +74,33 @@ const ProductCard = ({ producto, contacto }) => {
       </div>
 
       {/* Detalle del producto */}
-      <div className="p-6 flex flex-col flex-grow justify-between space-y-4">
+      <div className="p-4 sm:p-6 flex flex-col flex-grow justify-between space-y-4 max-w-full overflow-hidden">
         <div>
           <Link to={`/producto/${producto.id}`}>
-            <h3 className="font-serif text-xl font-bold text-dulzura-chocolate hover:text-dulzura-pink transition-colors line-clamp-1">
+            <h3 className="font-serif text-lg sm:text-xl font-bold text-dulzura-chocolate hover:text-dulzura-pink transition-colors line-clamp-1 break-words">
               {producto.nombre}
             </h3>
           </Link>
-          <p className="text-dulzura-chocolate/70 text-sm mt-2 line-clamp-2 leading-relaxed">
+          <p className="text-dulzura-chocolate/70 text-xs sm:text-sm mt-1.5 line-clamp-2 leading-relaxed break-words">
             {producto.descripcion}
           </p>
         </div>
 
         <div className="pt-2 border-t border-dulzura-rose/30 space-y-3">
           {/* Precios */}
-          <div className="flex items-baseline justify-between">
+          <div className="flex items-baseline justify-between gap-2 flex-wrap sm:flex-nowrap">
             <div>
-              <span className="text-xs text-dulzura-chocolate/60 block">Precio por menor</span>
-              <span className="font-serif text-2xl font-bold text-dulzura-chocolate">
+              <span className="text-[11px] text-dulzura-chocolate/60 block">Precio por menor</span>
+              <span className="font-serif text-xl sm:text-2xl font-bold text-dulzura-chocolate">
                 S/ {producto.precio.toFixed(2)}
               </span>
             </div>
             {producto.precioMayor && (
               <div className="text-right">
-                <span className="text-[11px] text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full inline-block">
+                <span className="text-[10px] sm:text-[11px] text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full inline-block">
                   Por Mayor
                 </span>
-                <span className="font-serif text-lg font-bold text-emerald-700 block">
+                <span className="font-serif text-base sm:text-lg font-bold text-emerald-700 block">
                   S/ {producto.precioMayor.toFixed(2)}
                 </span>
               </div>
@@ -112,15 +112,15 @@ const ProductCard = ({ producto, contacto }) => {
             <button
               onClick={handleAddToCart}
               disabled={!producto.disponible}
-              className={`flex-1 min-h-[44px] py-2.5 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-xs ${
+              className={`group/btn min-h-[44px] w-12 py-2.5 rounded-xl font-bold flex items-center justify-center transition-all duration-300 shadow-xs relative overflow-hidden ${
                 producto.disponible
-                  ? 'bg-dulzura-rose/60 hover:bg-dulzura-rose border border-dulzura-pink/40 text-dulzura-darkChoco active:scale-95'
+                  ? 'bg-dulzura-rose/70 hover:bg-dulzura-rose border border-dulzura-pink/50 text-dulzura-chocolate active:scale-95 hover:scale-108 hover:shadow-md'
                   : 'bg-gray-100 text-gray-400 cursor-not-allowed'
               }`}
-              title="Añadir a la Canastilla"
+              title="Añadir al Carrito"
             >
-              <ShoppingBag className="w-4 h-4 text-dulzura-chocolate" />
-              <span>+ Canastilla</span>
+              <Plus className="w-5 h-5 text-dulzura-chocolate transition-all duration-300 transform group-hover/btn:scale-0 group-hover/btn:opacity-0 absolute" />
+              <ShoppingBag className="w-5 h-5 text-dulzura-chocolate transition-all duration-300 transform scale-0 opacity-0 group-hover/btn:scale-100 group-hover/btn:opacity-100" />
             </button>
 
             <button

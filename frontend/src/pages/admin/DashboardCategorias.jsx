@@ -81,13 +81,13 @@ const DashboardCategorias = () => {
 
   return (
     <AdminLayout title="Gestión de Categorías">
-      <div className="flex justify-between items-center mb-6">
-        <p className="text-sm text-dulzura-chocolate/70">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
+        <p className="text-xs sm:text-sm text-dulzura-chocolate/70 break-words max-w-full">
           Organiza las secciones del catálogo (ej. Tortas, Postres, Bocaditos por mayor, Panes).
         </p>
         <button
           onClick={() => handleOpenModal()}
-          className="px-5 py-2.5 rounded-xl bg-dulzura-chocolate hover:bg-dulzura-darkChoco text-white font-semibold text-sm flex items-center gap-2 shadow-md transition-transform active:scale-95"
+          className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-dulzura-chocolate hover:bg-dulzura-darkChoco text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-md shrink-0 transition-transform active:scale-95"
         >
           <Plus className="w-4 h-4 text-dulzura-pink" />
           <span>Nueva Categoría</span>
@@ -98,7 +98,8 @@ const DashboardCategorias = () => {
         {isLoading ? (
           <div className="p-8 text-center text-gray-500">Cargando categorías...</div>
         ) : (
-          <table className="w-full text-left text-sm text-dulzura-chocolate">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm text-dulzura-chocolate min-w-[600px]">
             <thead className="bg-dulzura-warmGray text-xs uppercase font-bold text-dulzura-chocolate/70 border-b border-gray-200">
               <tr>
                 <th className="py-3.5 px-4">Orden</th>
@@ -155,6 +156,7 @@ const DashboardCategorias = () => {
               ))}
             </tbody>
           </table>
+          </div>
         )}
       </div>
 

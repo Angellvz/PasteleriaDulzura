@@ -93,23 +93,24 @@ const AdminLayout = ({ children, title }) => {
       <div className="flex-1 flex flex-col min-w-0">
         
         {/* Top Header Bar */}
-        <header className="bg-white border-b border-dulzura-rose/50 h-16 px-6 flex items-center justify-between shadow-xs">
-          <div className="flex items-center gap-4">
+        <header className="bg-white border-b border-dulzura-rose/50 h-16 px-3 sm:px-6 flex items-center justify-between shadow-xs">
+          <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="md:hidden p-2 text-dulzura-chocolate hover:bg-dulzura-rose/30 rounded-lg"
+              className="md:hidden p-2 text-dulzura-chocolate hover:bg-dulzura-rose/30 rounded-lg shrink-0"
+              aria-label="Abrir menú de navegación"
             >
               <Menu className="w-6 h-6" />
             </button>
-            <h2 className="font-serif text-xl font-bold text-dulzura-chocolate">
+            <h2 className="font-serif text-sm sm:text-lg md:text-xl font-bold text-dulzura-chocolate truncate min-w-0 leading-tight">
               {title}
             </h2>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-dulzura-rose/40 rounded-full text-xs font-medium text-dulzura-chocolate">
-              <UserCheck className="w-4 h-4 text-dulzura-pink" />
-              <span>Hola, <strong>{user?.usuario || 'Admin'}</strong></span>
+          <div className="flex items-center gap-2 shrink-0 ml-2">
+            <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 bg-dulzura-rose/40 rounded-full text-[11px] sm:text-xs font-medium text-dulzura-chocolate">
+              <UserCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-dulzura-pink shrink-0" />
+              <span className="truncate max-w-[80px] sm:max-w-none">Hola, <strong>{user?.usuario || 'Admin'}</strong></span>
             </div>
           </div>
         </header>

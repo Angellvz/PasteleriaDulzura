@@ -237,7 +237,7 @@ const ProductoDetalle = () => {
                 }`}
               >
                 <ShoppingBag className="w-5 h-5 text-dulzura-chocolate" />
-                <span>Agregar a Canastilla</span>
+                <span>Agregar al Carrito</span>
               </button>
 
               <button

@@ -72,77 +72,87 @@ const Home = () => {
 
       <main className="flex-grow">
         
-        {/* HERO SECTION */}
-        <section className="relative overflow-hidden pt-8 pb-16 lg:pt-12 lg:pb-24 bg-gradient-to-b from-dulzura-rose/30 via-dulzura-cream to-dulzura-cream">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        {/* HERO SECTION CON FONDO Y DEGRADADO ELEGANTE */}
+        <section className="relative overflow-hidden py-12 lg:py-20 bg-dulzura-darkChoco text-white">
+          
+          {/* Imagen de Fondo Principal con Overlay de Degradado Suave */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src={contacto?.imagenHero || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1600&auto=format&fit=crop"}
+              alt="Pastelería Dulzura Fondo Portada"
+              className="w-full h-full object-cover object-center filter brightness-105 scale-105"
+            />
+            {/* Gradient Overlays Suaves para que la torta del fondo se aprecie claramente */}
+            <div className="absolute inset-0 bg-gradient-to-r from-dulzura-darkChoco/85 via-dulzura-chocolate/70 to-black/40"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-dulzura-darkChoco/80 via-transparent to-black/20"></div>
+          </div>
+
+          {/* Contenido Principal sobre el Fondo */}
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               
-              {/* Text content */}
-              <div className="lg:col-span-7 space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dulzura-rose border border-dulzura-pink/30 text-dulzura-chocolate text-xs font-bold tracking-wider uppercase shadow-xs">
+              {/* Text content al costado de la foto */}
+              <div className="lg:col-span-7 space-y-6 text-left">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-dulzura-rose text-xs font-bold tracking-wider uppercase shadow-lg">
                   <Cake className="w-4 h-4 text-dulzura-pink" />
                   <span>Pastelería Artesanal en Arequipa</span>
                 </div>
 
-                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-dulzura-chocolate leading-tight">
+                <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
                   Pasteles & Postres horneados con <span className="text-dulzura-pink underline decoration-dulzura-rose underline-offset-8">amor puro</span>
                 </h1>
 
-                <p className="text-dulzura-chocolate/80 text-lg md:text-xl leading-relaxed max-w-2xl">
+                <p className="text-dulzura-cream/90 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl font-light drop-shadow-sm">
                   Tortas personalizadas para tus eventos, postres individuales irresistibles, bocaditos por mayor para reuniones y delivery a todos los distritos de Arequipa.
                 </p>
 
-                <div className="flex flex-wrap items-center gap-4 pt-4">
+                <div className="flex flex-wrap items-center gap-4 pt-2">
                   <Link
                     to="/productos"
-                    className="px-8 py-4 rounded-full bg-dulzura-chocolate hover:bg-dulzura-darkChoco text-white font-semibold text-base shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
+                    className="w-full sm:w-auto px-8 py-4 rounded-full bg-dulzura-pink hover:bg-rose-400 text-white font-bold text-base shadow-xl hover:shadow-pink-500/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 active:scale-95"
                   >
                     <span>Explorar Catálogo</span>
-                    <ArrowRight className="w-5 h-5 text-dulzura-pink" />
+                    <ArrowRight className="w-5 h-5 text-white" />
                   </Link>
                   <Link
                     to="/contacto"
-                    className="px-8 py-4 rounded-full bg-white hover:bg-dulzura-rose/30 text-dulzura-chocolate font-semibold text-base border-2 border-dulzura-rose shadow-md transition-all flex items-center gap-2"
+                    className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-base border border-white/30 backdrop-blur-md shadow-md transition-all flex items-center justify-center gap-2 active:scale-95"
                   >
-                    <MessageCircle className="w-5 h-5 text-emerald-600" />
+                    <MessageCircle className="w-5 h-5 text-emerald-400" />
                     <span>Pedidos por Mayor</span>
                   </Link>
                 </div>
 
                 {/* Features badges */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-dulzura-rose/50">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-white/15">
                   <div className="flex items-center gap-3">
-                    <ShieldCheck className="w-6 h-6 text-dulzura-pink shrink-0" />
-                    <span className="text-xs font-medium text-dulzura-chocolate">Ingredientes 100% Naturales</span>
+                    <ShieldCheck className="w-5 h-5 text-dulzura-pink shrink-0" />
+                    <span className="text-xs font-medium text-dulzura-cream/90">Ingredientes 100% Naturales</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Truck className="w-6 h-6 text-dulzura-pink shrink-0" />
-                    <span className="text-xs font-medium text-dulzura-chocolate">Delivery en Todo Arequipa</span>
+                    <Truck className="w-5 h-5 text-dulzura-pink shrink-0" />
+                    <span className="text-xs font-medium text-dulzura-cream/90">Delivery en Todo Arequipa</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <HeartHandshake className="w-6 h-6 text-dulzura-pink shrink-0" />
-                    <span className="text-xs font-medium text-dulzura-chocolate">Atención Personalizada</span>
+                    <HeartHandshake className="w-5 h-5 text-dulzura-pink shrink-0" />
+                    <span className="text-xs font-medium text-dulzura-cream/90">Atención Personalizada</span>
                   </div>
                 </div>
               </div>
 
-              {/* Hero Image Collage (Primero en móvil para alto impacto visual) */}
-              <div className="lg:col-span-5 relative order-first lg:order-last">
+              {/* Foto Destacada Flotante al Costado */}
+              <div className="lg:col-span-5 relative">
                 <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-                  <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] sm:aspect-square group">
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-white/30 aspect-[4/3] sm:aspect-square group backdrop-blur-xs">
                     <img
                       src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop"
                       alt="Torta Selva Negra Pastelería Dulzura Arequipa"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 right-3 text-white p-3 rounded-2xl bg-black/40 backdrop-blur-md border border-white/20 sm:hidden">
-                      <span className="text-xs font-bold block">✨ Repostería Fina & Artesanal</span>
-                      <span className="text-[10px] text-white/90">Cayma, Yanahuara y todo Arequipa</span>
-                    </div>
                   </div>
+                  
                   {/* Floating Badge */}
-                  <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-6 bg-white p-3 sm:p-4 rounded-2xl shadow-xl border border-dulzura-rose flex items-center gap-3 max-w-[240px] sm:max-w-xs shadow-pink-200/50">
+                  <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-6 bg-white p-3 sm:p-4 rounded-2xl shadow-2xl border border-dulzura-rose flex items-center gap-3 max-w-[240px] sm:max-w-xs text-dulzura-chocolate">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-dulzura-rose flex items-center justify-center shrink-0">
                       <Cake className="w-5 h-5 sm:w-6 sm:h-6 text-dulzura-chocolate" />
                     </div>
@@ -151,6 +161,7 @@ const Home = () => {
                       <p className="text-[10px] sm:text-[11px] text-dulzura-chocolate/70">Tortas finas en Arequipa</p>
                     </div>
                   </div>
+
                 </div>
               </div>
 

@@ -14,7 +14,8 @@ const getContacto = async (req, res, next) => {
             instagram: 'https://instagram.com/pasteleriadulzura'
           }),
           emailContacto: 'pedidos@pasteleriadulzura.pe',
-          mensajePlantillaWhatsapp: 'Hola Pastelería Dulzura, me gustaría pedir: {producto} (Precio: S/{precio}). ¿Tienen disponibilidad?'
+          mensajePlantillaWhatsapp: 'Hola Pastelería Dulzura, me gustaría pedir: {producto} (Precio: S/{precio}). ¿Tienen disponibilidad?',
+          imagenHero: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1600&auto=format&fit=crop'
         }
       });
     }
@@ -34,19 +35,27 @@ const actualizarContacto = async (req, res, next) => {
       horarios,
       redesSociales,
       emailContacto,
-      mensajePlantillaWhatsapp
+      mensajePlantillaWhatsapp,
+      imagenHero
     } = req.body;
 
-    const data = {
-      telefonoWhatsapp,
-      direccion,
-      horarios,
-      emailContacto,
-      mensajePlantillaWhatsapp
-    };
+    const data = {};
+
+    if (telefonoWhatsapp !== undefined) data.telefonoWhatsapp = telefonoWhatsapp;
+    if (direccion !== undefined) data.direccion = direccion;
+    if (horarios !== undefined) data.horarios = horarios;
+    if (emailContacto !== undefined) data.emailContacto = emailContacto;
+    if (mensajePlantillaWhatsapp !== undefined) data.mensajePlantillaWhatsapp = mensajePlantillaWhatsapp;
 
     if (redesSociales !== undefined) {
       data.redesSociales = typeof redesSociales === 'object' ? JSON.stringify(redesSociales) : redesSociales;
+    }
+
+    // Procesar archivo de imagen hero subido a Cloudinary / Local
+    if (req.file) {
+      data.imagenHero = req.file.path || req.file.secure_url || `/uploads/hero/${req.file.filename}`;
+    } else if (imagenHero !== undefined) {
+      data.imagenHero = imagenHero;
     }
 
     if (contacto) {

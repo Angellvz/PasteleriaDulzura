@@ -78,5 +78,6 @@ model Contacto {
   redesSociales            String   @default("{\"facebook\":\"https://facebook.com/pasteleriadulzura\",\"instagram\":\"https://instagram.com/pasteleriadulzura\"}")
   emailContacto            String   @default("pedidos@pasteleriadulzura.pe")
   mensajePlantillaWhatsapp String   @default("Hola Pastelería Dulzura, me gustaría pedir: {producto} (Precio: S/{precio}). ¿Tienen disponibilidad?")
+  imagenHero               String?
   updatedAt                DateTime @updatedAt
 }

@@ -11,6 +11,7 @@ const cloudinaryStorage = new CloudinaryStorage({
     let folder = 'pasteleria-dulzura/productos';
     if (req.baseUrl && req.baseUrl.includes('ofertas')) folder = 'pasteleria-dulzura/ofertas';
     if (req.baseUrl && req.baseUrl.includes('blog')) folder = 'pasteleria-dulzura/blog';
+    if (req.baseUrl && req.baseUrl.includes('contacto')) folder = 'pasteleria-dulzura/hero';
     if (req.body && req.body.tipoFolder) folder = `pasteleria-dulzura/${req.body.tipoFolder}`;
 
     return {

@@ -298,7 +298,7 @@ const DashboardContacto = () => {
                 className="px-8 py-3.5 rounded-2xl bg-dulzura-chocolate hover:bg-dulzura-darkChoco text-white font-bold text-sm flex items-center gap-2 shadow-lg transition-all"
               >
                 <Save className="w-4 h-4 text-dulzura-pink" />
-                <span>{updateMutation.isPending ? 'Guardando en Cloudinary...' : 'Guardar Cambios'}</span>
+                <span>{updateMutation.isPending ? 'Guardando...' : 'Guardar Cambios'}</span>
               </button>
             </div>
 

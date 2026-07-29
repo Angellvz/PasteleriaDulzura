@@ -145,8 +145,8 @@ const Home = () => {
                 <div className="relative mx-auto w-full max-w-md lg:max-w-none">
                   <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-white/30 aspect-[4/3] sm:aspect-square group backdrop-blur-xs">
                     <img
-                      src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop"
-                      alt="Torta Selva Negra Pastelería Dulzura Arequipa"
+                      src={contacto?.imagenHero || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&auto=format&fit=crop"}
+                      alt="Torta Destacada Pastelería Dulzura Arequipa"
                       className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                     />
                   </div>

@@ -65,24 +65,30 @@ const WhatsAppWidget = () => {
   return (
     <>
       {/* Floating Action Button */}
-      <div className="fixed bottom-6 right-6 z-40">
+      <div className="fixed bottom-6 right-6 z-55">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative group p-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-2xl hover:shadow-emerald-500/50 transition-all duration-300 transform hover:scale-110 active:scale-95 flex items-center justify-center animate-pulse"
+          className="relative group p-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-2xl hover:shadow-emerald-500/50 transition-all duration-300 transform hover:scale-110 active:scale-95 flex items-center justify-center animate-pulse cursor-pointer"
           aria-label="Abrir chat de WhatsApp"
         >
           <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400"></span>
           </span>
-          <WhatsAppIcon className="w-7 h-7 text-white" />
+          {isOpen ? <X className="w-7 h-7 text-white" /> : <WhatsAppIcon className="w-7 h-7 text-white" />}
         </button>
       </div>
 
       {/* Interactive Modal */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-sm w-full shadow-2xl overflow-hidden border border-dulzura-rose/50 transform transition-all animate-slideUp">
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fadeIn cursor-pointer"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-3xl max-w-sm w-full shadow-2xl overflow-hidden border border-dulzura-rose/50 transform transition-all animate-slideUp cursor-default"
+          >
             
             {/* Modal Header */}
             <div className="bg-gradient-to-r from-emerald-600 to-teal-700 p-5 text-white flex items-center justify-between relative">

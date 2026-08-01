@@ -1,11 +1,11 @@
 {
   "name": "pasteleria-dulzura-backend",
   "version": "1.0.0",
-  "description": "API REST Backend para Pastelería Dulzura",
+  "description": "API REST Backend para Pasteler\u00eda Dulzura",
   "main": "src/app.js",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
+    "start": "node api.js && node src/app.js",
+    "dev": "node api.js && nodemon src/app.js",
     "postinstall": "prisma generate",
     "vercel-build": "prisma generate",
     "prisma:generate": "prisma generate",
@@ -19,7 +19,7 @@
     "prisma",
     "jwt"
   ],
-  "author": "Pastelería Dulzura",
+  "author": "Pasteler\u00eda Dulzura",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.20.0",
